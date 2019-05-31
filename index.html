@@ -40,16 +40,18 @@
     </body>  
 
     <script> 
+      
+      answer = $('#answer');
+      number = $('#number');
        var classname="abc";
-       var number=document.getElementById("number").innerHTML;
-       var answer=document.getElementById("answer").value;
+      
       
 
         function sendData(){
 
            $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",{ "class":  classname,
-                         "number": number,
-                         "answer": answer},
+                         "number": document.getElementById("number").innerHTML,
+                         "answer": document.getElementById("answer").value},
                     function (data) {
 
                          alert("回答已送出");
