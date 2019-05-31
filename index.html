@@ -39,13 +39,13 @@
        var classname=document.getElementById("class").value;
        var number=document.getElementById("number").value;
        var answer=document.getElementById("answer").value;
-       var parameter = { "class":  classname,
-                         "number": number,
-                         "answer": answer};
+      
 
         function sendData(){
 
-           $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",parameter,
+           $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",{ "class":  classname,
+                         "number": number,
+                         "answer": answer},
                     function (data) {
 
                          alert("回答已送出");
