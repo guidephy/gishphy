@@ -21,6 +21,7 @@
         <input type="text"  style="text-align:center;" id="class" placeholder="請輸入班級，例如201">
         <input type="text"  style="text-align:center;" id="number" placeholder="請輸入座號，例如02">
         <input type="text"  style="text-align:center;" id="answer" placeholder="請輸入你的回答">
+        <button id="sendBtn" onclick="sendData()">送出回答</button>
         
       </div>
       
@@ -31,6 +32,34 @@
     </div>
 
     </body>  
+
+    <script> 
+       var classname=document.getElementById("class").value;
+       var number=document.getElementById("number").value;
+       var answer=document.getElementById("answer").value;
+       var parameter = {};
+
+           parameter = {
+
+            "class":  classname,
+            "number": number,
+            "answer": answer
+
+                       };
+
+        function sendData(){
+
+           $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",parameter,
+                    function (data) {
+
+                         alert("回答已送出");
+                    });
+          
+
+        };
+
+
+    </script>
                          
                                                    
 </html>
