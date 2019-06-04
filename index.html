@@ -29,7 +29,7 @@
           
           <button id="sendBtn" onclick="sendData()">送出回答</button>
           
-          <canvas id="chart" width="800" height="600"></canvas>  
+          <canvas id="chart" width="800" height="600" style='visibility:hidden'></canvas>  
           
           </div>
           </div>
@@ -48,7 +48,7 @@
     <script> 
 
         function sendData(){
-          
+          document.getElementById("chart").style.visibility='visible';
            $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",{ 
                          "class":  document.getElementById("class").value,
                          "number": document.getElementById("number").value,
