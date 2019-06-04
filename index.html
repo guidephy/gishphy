@@ -49,6 +49,15 @@
     <script> 
 
         function sendData(){
+          
+          if(document.getElementById("class").value=="reset"){
+             $.get("https://script.google.com/macros/s/AKfycbx6pbQHG1en9E33BZsY4c5qD5UJ81KRH-EdPgRL3FPuL0kLU1w/exec", {
+                       
+                    },
+                    function (data) {
+                       alert("成績已更新!");
+                    });
+          }else{
           alert("回答已送出");
           document.getElementById("sendBtn").style.visibility='hidden';
           document.getElementById("answer").style.visibility='hidden';
@@ -64,7 +73,7 @@
           document.getElementById("chart").style.visibility='visible';
           document.getElementById("againBtn").style.visibility='visible';
           document.getElementById("answer").value="";
-
+         }
         };
       
       function againData(){
