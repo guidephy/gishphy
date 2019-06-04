@@ -27,10 +27,27 @@
           <input type="text"  style="text-align:center;" id="answer" placeholder="請輸入你的回答">
           
           <button id="sendBtn" onclick="sendData()">送出回答</button>
-          <button id="resultBtn" onclick="resultData()" style='visibility:hidden'>作答情形</button>
+          <button id="resultBtn" onclick="resultData()" style='visibility:hidden' data-toggle="modal" data-target="#myModal">作答情形</button>
           </div>
           </div>
       </div>
+      
+      <div class="modal fade" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+               <h4 class="modal-title">作答結果</h4>
+             </div>
+             <div>
+               
+               
+             </div>
+           </div>
+        </div>
+       </div>
+      
+      
       
       <div data-role="footer" data-position="fixed" data-theme="b">
           <h4>桃園市立觀音高中</h4>
