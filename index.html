@@ -27,27 +27,14 @@
           <input type="text"  style="text-align:center;" id="answer" placeholder="請輸入你的回答">
           
           <button id="sendBtn" onclick="sendData()">送出回答</button>
-          <button type="button" class="btn btn-primary" id="resultBtn"  data-toggle="modal" data-target="#myModal">作答情形</button>
+          
+          <canvas id="chart" width="800" height="600"></canvas>  
+          
           </div>
           </div>
       </div>
       
-      <div class="modal fade" id="myModal" tabindex="-1">
-        <div class="modal-dialog">
-           <div class="modal-content">
-             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-               <h4 class="modal-title">作答結果</h4>
-             </div>
-             <div>
-               
-               
-             </div>
-           </div>
-        </div>
-       </div>
-      
-      
+
       
       <div data-role="footer" data-position="fixed" data-theme="b">
           <h4>桃園市立觀音高中</h4>
@@ -60,7 +47,6 @@
     <script> 
 
         function sendData(){
-           document.getElementById("sendBtn").style.visibility='hidden';
           
            $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",{ 
                          "class":  document.getElementById("class").value,
@@ -70,16 +56,77 @@
 
                          alert("回答已送出");
                     });
-          
-          document.getElementById("resultBtn").style.visibility='visible'; 
+         
 
         };
 
-        function resultData(){
-          document.getElementById("resultBtn").style.visibility='hidden'; 
-          document.getElementById("sendBtn").style.visibility='visible'; 
-          document.getElementById("answer").value='';
-          }
+       var myVar=setInterval(function(){mydata()},100);
+    var parameter={};
+    var coursedata=[];
+    var data1;
+    var data2;
+    var data3;
+    var data4;
+         
+    function mydata()
+      {
+        
+        $.get("https://script.google.com/macros/s/AKfycbxDWQsLKn5qjHl_KCvhgsedxZdX-B7RoA7xsXAEVQ-9g5Fwzt8/exec", parameter, function(data) {
+            
+         coursedata=data.split(","); 
+         /*    
+         data1=coursedata[1];
+         data2=coursedata[2];
+         data3=coursedata[3];
+         data4=coursedata[4];
+         */
+          
+         ctx = document.getElementById('chart').getContext('2d');
+          
+          var chart = new Chart(ctx, {
+    type: 'bar',
+    options: {
+      scales: {
+        yAxes:[{
+                    ticks : {
+                        max : 42,    
+                        min : 0
+                    }
+                }]
+    },
+    animation: false
+      },  
+    data: {
+        labels: ["A", "B", "C", "D"],
+        datasets: [{
+            label: '回答結果',
+            data: coursedata,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    }
+});
+          
+          
+          
+        
+             }); 
+        
+    
+      }  
+      
+      
 
     </script>
                          
