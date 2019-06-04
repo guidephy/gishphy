@@ -28,6 +28,7 @@
           <input type="text"  style="text-align:center;" id="answer" placeholder="請輸入你的回答">
           
           <button id="sendBtn" onclick="sendData()">送出回答</button>
+          <button id="againBtn" onclick="againData()" style='visibility:hidden'>下一題</button>
           
           <canvas id="chart" width="800" height="600" style='visibility:hidden'></canvas>  
           
@@ -48,18 +49,31 @@
     <script> 
 
         function sendData(){
-          document.getElementById("chart").style.visibility='visible';
+          alert("回答已送出");
+          document.getElementById("sendBtn").style.visibility='hidden';
+          document.getElementById("answer").style.visibility='hidden';
+          
            $.get("https://script.google.com/macros/s/AKfycbwjLyyuBEP4tXDTWLi0koq3N6VSpWHnssxEqs8q-m5aIYoDjrA/exec",{ 
                          "class":  document.getElementById("class").value,
                          "number": document.getElementById("number").value,
                          "answer": document.getElementById("answer").value},
                     function (data) {
 
-                         alert("回答已送出");
+                         
                     });
-         
+          document.getElementById("chart").style.visibility='visible';
+          document.getElementById("againBtn").style.visibility='visible';
+          document.getElementById("answer").value="";
 
         };
+      
+      function againData(){
+        document.getElementById("chart").style.visibility='hidden';
+        document.getElementById("againBtn").style.visibility='hidden';
+        document.getElementById("sendBtn").style.visibility='visible';
+        document.getElementById("answer").style.visibility='visible';
+        
+        }
 
        var myVar=setInterval(function(){mydata()},100);
     var parameter={};
