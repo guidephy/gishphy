@@ -59,7 +59,7 @@
                        alert("成績已更新!");
                     });
           }else{
-          alert("回答已送出");
+         
           document.getElementById("sendBtn").style.visibility='hidden';
           document.getElementById("answer").style.visibility='hidden';
           
@@ -68,7 +68,8 @@
                          "number": document.getElementById("number").value,
                          "answer": document.getElementById("answer").value},
                     function (data) {
-
+             
+                  alert("回答已送出");
                          
                     });
           document.getElementById("chart").style.visibility='visible';
